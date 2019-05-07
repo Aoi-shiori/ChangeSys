@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponse
+from change_management import views
 
 def index(request):
     return HttpResponse('这是我的首页')
