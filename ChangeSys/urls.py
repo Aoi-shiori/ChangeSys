@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponse
 from change_management import views
+from django.urls import  converters
 
 def index(request):
-    return HttpResponse('这是我的首页')
+    return HttpResponse('这是我的第一个首页')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",index),
+    path('change_management/book_lis/<book_id>/<category_id>/',views.book_lis),
+    path('change_management/book_author/',views.book_author),
+    path('change_management/book_publisher/<path:publisher_id>',views.book_publisher)
 ]
