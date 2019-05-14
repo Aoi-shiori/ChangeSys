@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from django.http import HttpResponse
 from change_management import views
 from django.urls import  converters
@@ -25,7 +25,8 @@ def index(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",index),
-    path('change_management/book_lis/<book_id>/<category_id>/',views.book_lis),
-    path('change_management/book_author/',views.book_author),
-    path('change_management/book_publisher/<path:publisher_id>',views.book_publisher)
+    path("change_management/", include('change_management.urls',namespace='change_management')),
+    path("change_management1/", include('change_management.urls',namespace='change_management1')),
+    path("change_management2/", include('change_management.urls','change_management',)),
+
 ]
