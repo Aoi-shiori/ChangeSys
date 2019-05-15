@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .nav{
+            overflow:hidden;
+        }
+        .nav li{
+            float: left;
+            list-style: none;
+            margin: 0 20px;
+        }
+        .lis{
+            overflow:hidden;
+            position: absolute;left:20px;top:50px;
+        }
+        .ur1{
+            overflow:hidden;
+            position: absolute;left:20px;top:300px;
+
+        }
+        .ur2{
+          overflow:hidden;
+            position: absolute;left:20px;top:200px;
+        }
+
+    </style>
+</head>
+<body>
+    <ur class='nav'>
+        <li><a href="">首页</a></li>
+        <li><a href="{% url 'change_management:bklist' %}">变更提交</a></li>
+        <li><a href="{% url 'change_management:page' page=3 %}">变更管理</a></li>
+        <li><a href="{% url 'change_management:signin' %}">登录</a></li>
+        <li><a href="{% url 'change_management:book_author' %}?id=2">后台管理</a></li>
+    </ur>
+    <table  class="lis">
+        <thead>
+        <tr>
+            <td>序号</td>
+            <td>书名</td>
+            <td>作者</td>
+            <td>价格</td>
+            <td>时间</td>
+        </tr>
+        </thead>
+
+        <tbody>
+            {% for book in books %}
+                {% if forloop.first %}
+                    <tr style="background: chartreuse">
+                {% elif forloop.last %}
+                    <tr style="background: aqua">
+                {% else %}
+                    <tr>
+                {% endif %}
+                        <td>{{ forloop.counter}}</td>
+                        <td>{{ book.name |truncatechars:4}}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.price|floatformat:2 }}元</td>
+                        <td>{{ book.tody|date:"Y-m-d G:i:s"|default:'未知时间' }}</td>
+            {% endfor %}
+        </tbody>
+    </table>
+    <ur class ="ur1">
+        {% for comm in comment %}
+            <li>{{ comm }}</li>
+        {% empty %}
+            <li>这里没有评论哦</li>
+        {% endfor %}
+{#    </ur>#}
+{#    <ur class ="ur2">#}
+{#        {% with books.0 as  ne %}#}
+{#            <li>{{ ne }}</li>#}
+{#            <li>{{ ne }}</li>#}
+{#            <li>{{ ne }}</li>#}
+{#            <p>{{ ne }}</p>#}
+{#        {% endwith %}#}
+{#    </ur>#}
+</body>
+</html>
+

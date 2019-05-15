@@ -11,7 +11,8 @@ urlpatterns = [
     path('book_author/', views.book_author,name='book_author'),
     #path('book_publisher/<path:publisher_id>', views.book_publisher,name ='book_publisher'),
     re_path(r'^book_publisher/(?P<publisher_id>\d{4})/$',views.book_publisher),
-    path('booklist',views.booklist),
-    path('booklist/page/<int:page>/',views.booklist)
-
+    path('booklist',views.booklist,name='bklist'),
+    path('booklist/page/<int:page>/',views.booklist,name = 'page'),
+    path('index/',views.index,name ='index2')
 ]
+
