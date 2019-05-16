@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en"><!-- 把你要显示的内容全部放在页面里 -->
+   <!--doctype html> 声明文档类型 html5 ->h5 ->html ->xtml 1.01 DTD
+   html ->结构  ->赤裸的孩子
+   css  -> 装饰  ->穿着打扮
+   js   -> 动作  ->行为举止
+   !doctype html ->声明  ->heml5规范
+	潜规则，命名 见名知意
+-->
+ <head><!--和浏览器进行交互 -->
+     <meta charset="UTF-8">
+    <title>Title</title>
+  <meta charset="UTF-8"> <!--字符编码,utf8 万国码-->
+  <meta name="Generator" content="editplus"> <!--使用工具生成的-->
+  <meta name="Author" content="aoishiori"> <!--作者 -->
+  <meta name="Keywords" content="11">  <!--百度关键词匹配 -->
+  <meta name="Description" content="仅供公司内部使用">  <!--页面内容描述,百度检索结果页面描述 -->
+  <title>Conlin_变更提交系统</title>  <!--网页标题 -->
+  <style>/* CSS样式表 */
+  *{/* 选中所有标签通配符 清除默认所有样式 */
+		margin: 0;
+		padding: 0;
+  }
+  html,body{/*并列*/
+	height:100%;/*可视大小，页面有多大，就显示多大*/
+  }
+  body{
+	display:grid;/*网格布局*/
+	/*display:flex;/*弹性盒模型,把页面变成盒子/
+	justify-content:center;/*水平轴对齐方式 居中对齐/
+	align-items:center; /*垂直对齐方式 居中对齐*/
+	/*添加一个背景图片 url路径        不平铺   位置、大小*/
+	background: src=('/static/1.jpg') no-repeat  center;/*不重叠,居中*/
+  }
+	.login{/*CSS选择器*/
+		/*grid-row:3; /*网格布局：3行/
+		grid-column:3;*//*网格布局：3列*/
+		width:300px;/*宽度*/
+		height:300px;/*高度*/
+		margin: auto;
+		background-color:#ebf0f1; /*背景颜色：天蓝50a2d6*/
+		border-radius:10px;
+	}
+
+	.login:before{/*伪元素*/
+		content:"";/*激活伪元素的必要因素，填写会显示文字内容，*/
+		display:block;
+		width:100%;
+		height:10px;
+		background-image:-webkit-linear-gradient(left,
+		#27ae60 0%, #27ae60 20%,
+		#8444ad 20%,#8444ad 40%,
+		#3498d8 40%,#3498d8 60%,
+		#e74c3c 60%,#e74c3c 80%,
+		#f1c40f 80%,#f1c40f 100%
+		); /*渐变色*/
+		border-radius:6px 6px 0px 0px;  /*圆角属性左上，右上 ，左下，右下*/
+		/*position:relative;
+		bottom:-200px;/     /*上下所在位置*/
+	}
+	/*.login-head{
+		width:100%;
+		height:10px;
+		background-image:-webkit-linear-gradient(left,
+		#27ae60 0%, #27ae60 20%,
+		#8444ad 20%,#8444ad 40%,
+		#3498d8 40%,#3498d8 60%,
+		#e74c3c 60%,#e74c3c 80%,
+		#f1c40f 80%,#f1c40f 100%
+		); /*渐变色/
+		border-radius:6px 6px 0px 0px;  /*圆角属性左上，右上 ，左下，右下/
+		/*position:relative;
+		bottom:-200px;*/     /*上下所在位置/
+	}*/
+	/*
+		熟悉CSS  .login::before ->经历过IE 是否兼容的写法
+		DOM
+		0.3秒打开网站
+		h1->是主标题 唯一一个，
+		h2->标签 副标题，
+		h3->商品 主标题
+		伪元素 ->性能上有优化，不能被选中。不存在于DOM
+
+	*/
+
+	.title{
+		line-height:80px;		/*行高*/
+		text-align: center;		/*水平居中*/
+		color:#096;				/*颜色*/
+		font-size:1.5em;			/*16px  2*16px rem 默认字体的2倍大小，适配写法 不一定要用16px*/
+	}
+	.login-content{
+		display:flex;
+		flex-direction:column;/*改变弹性盒方向,column:列 rows：排*/
+		justify-content:space-around; /*水平方向等比环绕*/
+		align-items:center; /*垂直轴*/
+		height:200px;
+		background-color:#ccc;
+	}
+	.login-content input{
+		width:80%;
+		height:40px;
+		border:1px solid #bbb;
+		border-radius:6px;/*圆角*/
+		outline:none;/*清除点击的默认样式，点击是的外边框*/
+		text-indent:1.3em;/*行缩进*/
+	}
+	.login-content input[type='submit']{/*熟悉选择器：选中input下的sbumit元素*/
+		text-indent:0;
+		background-color:#e74c3c;
+		color:#fff;
+	}
+  </style>
+ </head>
+ <body><!--写给用户看的-->
+	<div class= "login"><!--盒子标签 宽高大小颜色-->
+		<!--<div class ="login-head"></div><--盒子，loging上方的颜色条-->
+		<h2 class="title">用户登录</h2>
+		<form action="" class="login-content" method ='post'><!--表单-->
+		<input type ="text" name ='user' placeholder ='请输入账号'> <!--文本框-->
+		<input type ="password" name ='pwd' placeholder ='请输入密码'> <!--密码-->
+		<input type ="submit" value ='登录'>
+	</div>
+
+ </body>
+</html>

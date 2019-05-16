@@ -14,6 +14,6 @@ urlpatterns = [
     # path('booklist',views.booklist,name='bklist'),
     # path('booklist/page/<int:page>/',views.booklist,name = 'page'),
     # path('index/',views.index,name ='index2'),
-    path('changemanagement/',views.changemanagement,name ='changement'),
+    path('change_implementation/',views.change_implementation,name='implementation'),
 ]
 

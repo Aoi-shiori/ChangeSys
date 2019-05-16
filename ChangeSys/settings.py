@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'change_management',
+    'change_implementation',
 ]
 
 MIDDLEWARE = [
@@ -64,6 +66,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins':['django.templatetags.static']
         },
     },
 ]
@@ -76,10 +79,16 @@ WSGI_APPLICATION = 'ChangeSys.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE':'django.db.backends.mysql',
+        'NAME':'changedb',
+        'USER':'root',
+        'PASSWORD':'conlin360',
+        'HOST':'192.168.0.11',
+        'PORT':'3306',
+
     }
 }
+
 
 
 # Password validation
@@ -119,3 +128,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR,"static")]

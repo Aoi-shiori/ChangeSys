@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load my_filter %}
+{% block connect %}
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+<link rel="stylesheet" href="/static/css/change_management.css">
+    <body class ='bo'>
+        <table  class="lis">
+            <thead>
+            <tr>
+                <td>序号</td>
+                <td>书名</td>
+                <td>作者</td>
+                <td>价格</td>
+                <td>时间</td>
+            </tr>
+            </thead>
+
+            <tbody>
+                {% for book in books %}
+                    {% if forloop.first %}
+                        <tr style="background: chartreuse">
+                    {% elif forloop.last %}
+                        <tr style="background: aqua">
+                    {% else %}
+                        <tr>
+                    {% endif %}
+                            <td>{{ forloop.counter}}</td>
+                            <td>{{ book.name |truncatechars:4}}</td>
+                            <td>{{ book.author }}</td>
+                            <td>{{ book.price|floatformat:2 }}元</td>
+    {#                      <td>{{ book.tody|date:"Y-m-d G:i:s"|default:'未知时间'}}</td>#}
+                            <td>{{ book.tody|time_since|default:'未知时间'}}</td>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+
+{% endblock %}

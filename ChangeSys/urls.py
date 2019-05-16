@@ -26,6 +26,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path("",index),
     path("change_management/", include('change_management.urls',namespace='change_management')),
+    path("change_implementation/", include('change_implementation.urls',namespace='change_implementation')),
     # path("change_management1/", include('change_management.urls',namespace='change_management1')),
     # path("change_management2/", include('change_management.urls','change_management')),
 

@@ -1,17 +1,10 @@
+{% load my_filter %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        .nav{
-            overflow:hidden;
-        }
-        .nav li{
-            float: left;
-            list-style: none;
-            margin: 0 20px;
-        }
         .lis{
             overflow:hidden;
             position: absolute;left:20px;top:50px;
@@ -29,13 +22,7 @@
     </style>
 </head>
 <body>
-    <ur class='nav'>
-        <li><a href="">首页</a></li>
-        <li><a href="{% url 'change_management:bklist' %}">变更提交</a></li>
-        <li><a href="{% url 'change_management:page' page=3 %}">变更管理</a></li>
-        <li><a href="{% url 'change_management:signin' %}">登录</a></li>
-        <li><a href="{% url 'change_management:book_author' %}?id=2">后台管理</a></li>
-    </ur>
+    {% include "base.html" %}
     <table  class="lis">
         <thead>
         <tr>
@@ -60,7 +47,8 @@
                         <td>{{ book.name |truncatechars:4}}</td>
                         <td>{{ book.author }}</td>
                         <td>{{ book.price|floatformat:2 }}元</td>
-                        <td>{{ book.tody|date:"Y-m-d G:i:s"|default:'未知时间' }}</td>
+{#                      <td>{{ book.tody|date:"Y-m-d G:i:s"|default:'未知时间'}}</td>#}
+                        <td>{{ book.tody|time_since|default:'未知时间'}}</td>
             {% endfor %}
         </tbody>
     </table>
@@ -79,6 +67,7 @@
 {#            <p>{{ ne }}</p>#}
 {#        {% endwith %}#}
 {#    </ur>#}
+    {% include 'footer.html' %}
 </body>
 </html>
 

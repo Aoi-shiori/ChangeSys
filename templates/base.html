@@ -1,0 +1,28 @@
+{% load my_filter %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/base.css">
+</head>
+<body>
+<nav>
+    <ul class='nav'>
+        <li><a href="{% url 'change_management:changement' %}">首页</a></li>
+{#        <li><a href="{% url 'change_management:bklist' %}">变更提交</a></li>#}
+        <li><a href="{% url 'change_management:changement' %}">变更提交</a></li>
+{#        <li><a href="{% url 'change_management:page' page=3 %}">变更管理</a></li>#}
+        <li><a href="{% url 'change_implementation:implementation'%}">变更管理</a></li>
+{#        <li><a href="{% url 'change_management:changement' %}">登录</a></li>#}
+{#        <li><a href="{% url 'change_management:book_author' %}?id=2">后台管理</a></li>#}
+    </ul>
+</nav>
+
+    <div class='connect'>
+        {% block connect %}
+        
+        {% endblock %}
+    </div>
+</body>
+</html>
