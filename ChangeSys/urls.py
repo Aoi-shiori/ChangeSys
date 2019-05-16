@@ -19,14 +19,11 @@ from django.http import HttpResponse
 from change_management import views
 from django.urls import  converters
 
-def index(request):
-    return HttpResponse('这是我的第一个首页')
-
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path("",index),
-    path("change_management/", include('change_management.urls',namespace='change_management')),
-    path("change_implementation/", include('change_implementation.urls',namespace='change_implementation')),
+    path("",include('change_management.urls',namespace='index_home')),
+    path("", include('change_management.urls',namespace='change_management')),
+    path("", include('change_implementation.urls',namespace='change_implementation')),
     # path("change_management1/", include('change_management.urls',namespace='change_management1')),
     # path("change_management2/", include('change_management.urls','change_management')),
 

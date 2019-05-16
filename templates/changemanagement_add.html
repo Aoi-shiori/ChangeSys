@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block connect %}
+    <form action="" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td>关联类型：</td>
+                    <td><input type="text"name="AssociationTypes"></td>
+                </tr>
+                <tr>
+                    <td>关联编号：</td>
+                    <td><input type="text"name="AssociatedNumber"></td>
+                </tr>
+                <tr>
+                    <td>数据库：</td>
+                    <td><input type="text"name="Datebase"></td>
+                </tr>
+                <tr>
+                    <td>填报人：</td>
+                    <td><input type="text"name="Informant"></td>
+                </tr>
+                <tr>
+                    <td>变更内容：</td>
+                    <td><input type="text"name="ChangeContent"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+{% endblock %}

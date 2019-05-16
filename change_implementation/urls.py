@@ -2,8 +2,7 @@
 from django.urls import path,re_path
 from . import views
 
-app_name = 'change_management'
-
+app_name = 'change_implementation'
 urlpatterns = [
     # path('',views.book,name='index'),
     # path('login/',views.login,name='signin'),
@@ -14,6 +13,6 @@ urlpatterns = [
     # path('booklist',views.booklist,name='bklist'),
     # path('booklist/page/<int:page>/',views.booklist,name = 'page'),
     # path('index/',views.index,name ='index2'),
-    path('change_implementation/',views.change_implementation,name='implementation'),
+    path('change_implementation/', views.change_implementation, name='implementation'),
 ]
 

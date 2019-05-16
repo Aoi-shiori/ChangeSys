@@ -1,59 +1,40 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,reverse
 from django.http import HttpResponse
-from django.shortcuts import redirect,reverse
+from django.db import connection
 from datetime import datetime
 
+
 # Create your views here.
+def get_corsor():
+    return connection.cursor()
 
 def changemanagement(request):
-    connect = {
-        'books': [
-            {
-                'name': '三国演义',
-                'author': '罗贯中',
-                'price': 55.343254,
-                'tody': datetime.now(),
-            },
-            {
-                'name': '茶花女',
-                'author': '小杜马',
-                'price': 60.503953,
-                'tody': datetime.now(),
-            },
-            {
-                'name': '西游记',
-                'author': '吴承恩',
-                'price': 100.49553,
-                'tody': datetime.now(),
-            },
-            {
-                'name': '红楼梦',
-                'author': '曹雪芹',
-                'price': 90.943534,
-                # 'tody': datetime.now(),
-            },
-            {
-                'name': '葫芦娃',
-                'author': '曹雪芹',
-                'price': 60.943534,
-                'tody': datetime(year=2019, month=3, day=14, hour=11, minute=1, second=0),
-            },
-        ],
-        'person': {
-            'use': '小明',
-            'pw': '222',
-            'are': '杭州',
+    cursor =get_corsor()
+    cursor.execute('select*from change_management')
+    changemanagements = cursor.fetchall()
+    return render(request, 'change_management.html', context={'changemanagements': changemanagements})
 
-        },
+def changemanagement_add(request):
+    if request.method =='GET':
+        return render(request,'changemanagement_add.html')
+    else:
+        AssociationTypes = request.POST.get("AssociationTypes")
+        AssociatedNumber = request.POST.get("AssociatedNumber")
+        Datebase = request.POST.get("Datebase")
+        Informant = request.POST.get("Informant")
+        ChangeContent = request.POST.get("ChangeContent")
+        cursor = get_corsor()
+        cursor.execute("insert into change_management(ChangeID,AssociationTypes,AssociatedNumber,Datebase,Informant,FillTime,Reviewer,ReviewStatus,ReviewContent,ChangeContent,AuditTime) value (null,'%s','%s','%s','%s','%s',null, null,null,'%s',null)" % (AssociationTypes, AssociatedNumber, Datebase, Informant, datetime.now(), ChangeContent))
+        return redirect(reverse('index_home:index_management'))
 
-        "comment": [
-            # "写的很不错",
-            # "非常的精彩"
-        ]
-
-    }
-    return render(request, 'change_management.html', context=connect)
-
-
-
-
+def changemanagement_delete (request):
+    if 'delete'in request.POST:
+        if request.method == 'POST':
+            ChangeID =request.POST.get("ChangeID")
+            cursor =get_corsor()
+            cursor.execute("delete from change_management where ChangeID =%s" %ChangeID)
+            return redirect(reverse('index_home:index_management'))
+        else:
+            raise RuntimeError("删除图书的method错误！")
+    else:
+        return HttpResponse("编辑还没做")

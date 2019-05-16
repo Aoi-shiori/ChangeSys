@@ -45,7 +45,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -82,8 +82,8 @@ DATABASES = {
         'ENGINE':'django.db.backends.mysql',
         'NAME':'changedb',
         'USER':'root',
-        'PASSWORD':'conlin360',
-        'HOST':'192.168.0.11',
+        'PASSWORD':'376419974',
+        'HOST':'127.0.0.1',
         'PORT':'3306',
 
     }
