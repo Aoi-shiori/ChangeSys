@@ -28,13 +28,24 @@ def changemanagement_add(request):
         return redirect(reverse('index_home:index_management'))
 
 def changemanagement_delete (request):
-    if 'delete'in request.POST:
-        if request.method == 'POST':
+    if request.method == 'POST':
+        if 'delete'in request.POST:
             ChangeID =request.POST.get("ChangeID")
             cursor =get_corsor()
             cursor.execute("delete from change_management where ChangeID =%s" %ChangeID)
             return redirect(reverse('index_home:index_management'))
-        else:
-            raise RuntimeError("删除图书的method错误！")
+
+        elif 'editor'in request.POST:
+            AssociationTypes = request.POST.get("AssociationTypes")
+            AssociatedNumber = request.POST.get("AssociatedNumber")
+            Datebase = request.POST.get("Datebase")
+            Informant = request.POST.get("Informant")
+            ChangeContent = request.POST.get("ChangeContent")
+            cursor = get_corsor()
+            cursor.execute(
+                "update change_management set (ChangeID,AssociationTypes,AssociatedNumber,Datebase,Informant,FillTime,Reviewer,ReviewStatus,ReviewContent,ChangeContent,AuditTime )  value (null,'%s','%s','%s','%s','%s',null, null,null,'%s',null) " % (
+                AssociationTypes, AssociatedNumber, Datebase, Informant, datetime.now(), ChangeContent))
+            return redirect(reverse('index_home:index_management'))
+            return HttpResponse("编辑还没做")
     else:
-        return HttpResponse("编辑还没做")
+        raise RuntimeError("删除图书的method错误！")

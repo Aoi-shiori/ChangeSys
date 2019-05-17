@@ -82,8 +82,8 @@ DATABASES = {
         'ENGINE':'django.db.backends.mysql',
         'NAME':'changedb',
         'USER':'root',
-        'PASSWORD':'376419974',
-        'HOST':'127.0.0.1',
+        'PASSWORD':'conlin360',
+        'HOST':'192.168.0.11',
         'PORT':'3306',
 
     }
